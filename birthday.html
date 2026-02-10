@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Farwa!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Amsterline';
+            src: url('./Amsterline.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --primary-pink: #F8BBD9;
+            --deep-pink: #E4A5C7;
+            --soft-pink: #F5D0E4;
+            --light-pink: #FDF2F8;
+            --rose-gold: #E8B4CB;
+            --white: #ffffff;
+            --shadow-light: rgba(248, 187, 217, 0.4);
+            --shadow-deep: rgba(228, 165, 199, 0.5);
+            --gradient-main: linear-gradient(135deg, var(--light-pink) 0%, var(--soft-pink) 30%, var(--primary-pink) 70%, var(--deep-pink) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Raleway", sans-serif;
+            background: var(--gradient-main);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .floating-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-heart, .floating-star {
+            position: absolute;
+            animation: floatHeavenly 12s infinite ease-in-out;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 10px var(--shadow-light));
+        }
+
+        .floating-heart { font-size: clamp(18px, 4vw, 28px); }
+        .floating-star { font-size: clamp(16px, 3vw, 24px); }
+
+        /* Falling bow animation */
+        .falling-bow {
+            position: absolute;
+            font-size: clamp(20px, 4vw, 32px);
+            animation: fallDown linear infinite;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.6));
+        }
+
+        @keyframes fallDown {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                top: 110%;
+                transform: translateX(20px) rotate(360deg);
+                opacity: 0.4;
+            }
+        }
+
+        @keyframes floatHeavenly {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.7;
+            }
+            33% { 
+                transform: translateY(-30px) rotate(120deg) scale(1.2);
+                opacity: 0.9;
+            }
+            66% { 
+                transform: translateY(-60px) rotate(240deg) scale(0.9);
+                opacity: 0.8;
+            }
+        }
+
+        .float-1 { left: 10%; animation-delay: 0s; animation-duration: 15s; }
+        .float-2 { left: 25%; animation-delay: 2s; animation-duration: 18s; }
+        .float-3 { left: 40%; animation-delay: 4s; animation-duration: 16s; }
+        .float-4 { left: 55%; animation-delay: 1s; animation-duration: 20s; }
+        .float-5 { left: 70%; animation-delay: 3s; animation-duration: 14s; }
+        .float-6 { left: 85%; animation-delay: 5s; animation-duration: 17s; }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            padding: clamp(20px, 5vw, 60px) clamp(20px, 5vw, 40px);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-header {
+            text-align: center;
+            margin-bottom: clamp(60px, 10vw, 100px);
+            animation: slideInFromTop 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+        }
+
+        @keyframes slideInFromTop {
+            0% { 
+                opacity: 0; 
+                transform: translateY(-100px) scale(0.8); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .hero-title {
+            font-family: "Raleway", sans-serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 700;
+            color: #800000;
+            text-shadow: 0 0 60px var(--shadow-light);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-family: "Raleway", sans-serif;
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            font-weight: 400;
+            color: white;
+            font-style: italic;
+            text-shadow: 0 20px 40px var(--shadow-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .glass-card {
+            background: var(--gradient-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 40px;
+            padding: clamp(40px, 8vw, 80px);
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                0 35px 100px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+
+        .flashcards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: clamp(25px, 5vw, 40px);
+            margin: clamp(60px, 12vw, 100px) 0;
+        }
+
+        .flashcard {
+            perspective: 1200px;
+            height: 420px;
+            cursor: pointer;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-style: preserve-3d;
+        }
+
+        .flashcard:hover .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 30px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        .flashcard-front {
+            background: rgba(255, 192, 203, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .flashcard-back {
+            background: var(--gradient-glass);
+            backdrop-filter: blur(15px);
+            transform: rotateY(180deg);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .flashcard-icon {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 0;
+        }
+        
+        .flashcard-title {
+            display: none;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+
+        .flashcard-text {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: 1.7;
+            font-weight: 300;
+            color: var(--deep-pink);
+        }
+
+        .timer-container {
+            margin: clamp(80px, 15vw, 120px) auto;
+            max-width: 1000px;
+        }
+
+        .timer-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--gradient-glass);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        .time-unit {
+            text-align: center;
+        }
+
+        .time-number {
+            font-family: "Raleway", sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 700;
+            color: #FFB6C1;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 5px 20px rgba(255, 182, 193, 0.5);
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #FFB6C1;
+            font-weight: 500;
+        }
+
+        .music-btn {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-main);
+            border: none;
+            border-radius: 50%;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 
+                0 20px 60px var(--shadow-deep),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: heartbeat 2s infinite;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 
+                0 30px 80px var(--shadow-deep),
+                inset 0 2px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .music-btn.playing {
+            animation: pulseGlow 1.5s infinite;
+            box-shadow: 
+                0 0 40px var(--primary-pink),
+                0 20px 60px var(--shadow-deep);
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px var(--primary-pink), 0 20px 60px var(--shadow-deep); }
+            50% { box-shadow: 0 0 60px var(--primary-pink), 0 25px 70px var(--shadow-deep); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .hero-title {
+                letter-spacing: -1px;
+            }
+            
+            .flashcards-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .music-btn {
+                width: 70px;
+                height: 70px;
+                font-size: 1.6rem;
+                bottom: 25px;
+                right: 25px;
+            }
+            
+            .timer-display {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 30px 25px;
+                margin: 10px 0;
+            }
+            
+            .timer-display {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements" aria-hidden="true">
+        <!-- Falling bows only -->
+        <div class="falling-bow" style="left: 5%; animation-duration: 8s; animation-delay: 0s;">🎀</div>
+        <div class="falling-bow" style="left: 15%; animation-duration: 10s; animation-delay: 2s;">🎀</div>
+        <div class="falling-bow" style="left: 30%; animation-duration: 9s; animation-delay: 4s;">🎀</div>
+        <div class="falling-bow" style="left: 45%; animation-duration: 11s; animation-delay: 1s;">🎀</div>
+        <div class="falling-bow" style="left: 60%; animation-duration: 8.5s; animation-delay: 3s;">🎀</div>
+        <div class="falling-bow" style="left: 75%; animation-duration: 10.5s; animation-delay: 5s;">🎀</div>
+        <div class="falling-bow" style="left: 90%; animation-duration: 9.5s; animation-delay: 2.5s;">🎀</div>
+    </div>
+
+    <div class="container">
+        <section class="hero-header fade-in-up">
+            <h1 class="hero-title">Happy Birthday Farwa!</h1>
+            <div class="hero-subtitle">To the most wonderful soul</div>
+        </section>
+
+        <section class="fade-in-up" style="text-align: center; margin-bottom: 100px;">
+            <h2 style="
+                font-family: 'Raleway', sans-serif;
+                font-size: clamp(2.5rem, 7vw, 4.5rem);
+                color: #F5F5DC;
+                margin-bottom: 3rem;
+                text-shadow: 0 10px 40px var(--shadow-light);
+            ">promises</h2>
+            
+            <div class="flashcards-grid">
+                <div class="flashcard" tabindex="0">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flashcard-icon">💗</div>
+                            <h3 class="flashcard-title">Goal Achievement</h3>
+                        </div>
+                        <div class="flashcard-face flashcard-back">
+                            <p class="flashcard-text">
+                                I will make you achieve the goals you wishes for this year. 
+                                Together we'll turn your dreams into reality.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" tabindex="0">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flashcard-icon">💗</div>
+                            <h3 class="flashcard-title">Pure Happiness</h3>
+                        </div>
+                        <div class="flashcard-face flashcard-back">
+                            <p class="flashcard-text">
+                                I will make you feel more happy. 
+                                Your smile means everything to me.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" tabindex="0">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flashcard-icon">💗</div>
+                            <h3 class="flashcard-title">You Matter</h3>
+                        </div>
+                        <div class="flashcard-face flashcard-back">
+                            <p class="flashcard-text">
+                                I will make you feel that your existence matters alot for me. 
+                                You are irreplaceable in my world.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" tabindex="0">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flashcard-icon">💗</div>
+                            <h3 class="flashcard-title">Beautiful Life</h3>
+                        </div>
+                        <div class="flashcard-face flashcard-back">
+                            <p class="flashcard-text">
+                                I am gonna make your life more beautifull. 
+                                Every day with you should be magical.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" tabindex="0">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flashcard-icon">💗</div>
+                            <h3 class="flashcard-title">Adventures Together</h3>
+                        </div>
+                        <div class="flashcard-face flashcard-back">
+                            <p class="flashcard-text">
+                                I will take you out on drives and for good food dates. 
+                                Creating memories together is my favorite thing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" tabindex="0">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flashcard-icon">💗</div>
+                            <h3 class="flashcard-title">Best Version</h3>
+                        </div>
+                        <div class="flashcard-face flashcard-back">
+                            <p class="flashcard-text">
+                                I will make you the best version of yourself. 
+                                Supporting your growth is my promise to you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card fade-in-up" style="text-align: center; max-width: 900px; margin: 0 auto 100px;">
+            <h2 style="
+                font-family: 'Raleway', sans-serif;
+                font-size: clamp(2.8rem, 8vw, 5rem);
+                color: #800000;
+                margin-bottom: 2rem;
+                text-shadow: 0 15px 50px var(--shadow-deep);
+            ">pretty lil Baby</h2>
+            <p style="font-size: clamp(1.2rem, 3vw, 1.5rem); line-height: 1.9; color: #800000; margin-bottom: 1.5rem;">
+                Today we celebrate YOU - your laughter, your light, your beautiful heart. 
+                May this year bring you magical moments, endless joy, and all your heart desires.
+            </p>
+            <p style="font-size: clamp(1.2rem, 3vw, 1.5rem); line-height: 1.9; color: #800000; margin-bottom: 2rem; font-style: italic;">
+                You are loved more than words can express. Here's to an amazing new chapter!
+            </p>
+            <div style="
+                font-family: 'Raleway', sans-serif;
+                font-size: clamp(1.4rem, 4vw, 2.2rem);
+                color: #800000;
+                font-weight: 600;
+                text-shadow: 0 10px 30px var(--shadow-deep);
+            ">With all my love and warmest wishes</div>
+        </section>
+
+        <section class="timer-container fade-in-up">
+            <h2 style="
+                font-family: 'Raleway', sans-serif;
+                font-size: clamp(2.2rem, 6vw, 3.8rem);
+                color: #F5F5DC;
+                text-align: center;
+                margin-bottom: 1.5rem;
+                text-shadow: 0 10px 40px var(--shadow-light);
+            ">Been in Heaven for</h2>
+            <div class="timer-display" id="timer">
+                <div class="time-unit">
+                    <div class="time-number" id="days">00</div>
+                    <div class="time-label">Days</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-number" id="hours">00</div>
+                    <div class="time-label">Hours</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-number" id="minutes">00</div>
+                    <div class="time-label">Minutes</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-number" id="seconds">00</div>
+                    <div class="time-label">Seconds</div>
+                </div>
+            </div>
+            <p style="
+                font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+                line-height: 1.8;
+                color: white;
+                text-align: center;
+                max-width: 800px;
+                margin: 2rem auto 0;
+                font-style: italic;
+            ">
+                Every moment with you is magical. You mean the world to me. 
+                Here's to our beautiful journey together!
+            </p>
+        </section>
+    </div>
+
+    <button class="music-btn" id="musicToggle" aria-label="Toggle music">
+        🤍
+    </button>
+
+    <audio id="birthdayMusic" loop preload="auto">
+        <source src="audio.mp3" type="audio/mpeg">
+        Your browser doesn't support audio playback.
+    </audio>
+
+    <script>
+        const musicBtn = document.getElementById('musicToggle');
+        const music = document.getElementById('birthdayMusic');
+        
+        musicBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.volume = 0.25;
+                music.play().catch(e => console.log('Audio play failed:', e));
+                musicBtn.innerHTML = '🤍';
+                musicBtn.classList.add('playing');
+            } else {
+                music.pause();
+                musicBtn.innerHTML = '🤍';
+                musicBtn.classList.remove('playing');
+            }
+        });
+
+        const startDate = new Date("October 28, 2025 14:11:00").getTime();
+        
+        function updateTimer() {
+            const now = new Date().getTime();
+            const elapsed = now - startDate;
+            
+            const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        document.querySelectorAll('.flashcard').forEach((card, index) => {
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.classList.toggle('flipped');
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+
+        document.addEventListener('click', (e) => {
+            const sparkle = document.createElement('div');
+            sparkle.style.cssText = `
+                position: fixed;
+                left: ${e.clientX}px;
+                top: ${e.clientY}px;
+                font-size: 24px;
+                pointer-events: none;
+                z-index: 9999;
+                animation: sparkleBurst 1s ease-out forwards;
+                transform: translate(-50%, -50%);
+            `;
+            sparkle.innerHTML = '🤍';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 1000);
+        });
+
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkleBurst {
+                0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+                50% { transform: translate(-50%, -50%) scale(1.5) rotate(180deg); opacity: 1; }
+                100% { transform: translate(-50%, -50%) scale(0) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+    </script>
+</body>
+</html>
